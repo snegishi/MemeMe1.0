@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EditorViewController.swift
 //  MemeMe
 //
 //  Created by Shin Negishi on 12/1/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: Properties
     
@@ -39,20 +39,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    // MARK: Configuration for TextField
+    
+    func configure(textField: UITextField) {
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.isHidden = true
+    }
+    
     // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topTextField.delegate = self
-        bottomTextField.delegate = self
+        configure(textField: topTextField)
+        configure(textField: bottomTextField)
         
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.typingAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        
-        topTextField.isHidden = true
-        bottomTextField.isHidden = true
+//        topTextField.delegate = self
+//        bottomTextField.delegate = self
+//
+//        topTextField.defaultTextAttributes = memeTextAttributes
+//        topTextField.typingAttributes = memeTextAttributes
+//        bottomTextField.defaultTextAttributes = memeTextAttributes
+//
+//        topTextField.isHidden = true
+//        bottomTextField.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,7 +110,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y = -getKeyboardHeight(notification)
+        if bottomTextField.isEditing {
+            view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
     
     func subscribeToHideKeyboardNotifications() {
@@ -121,12 +134,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // MARK: Image Operations
-
-    @IBAction func pickAnImageFromeAlbum(_ sender: Any) {
+    
+    func presentImagePickerWith(sourceType: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
+
+    }
+
+    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
+        presentImagePickerWith(sourceType: .photoLibrary)
+//        let imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+//        imagePicker.sourceType = .photoLibrary
+//        present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -143,7 +165,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // TODO implement the function of Retake and Use Photo
-    @IBAction func pickAnImageFromCamera(_ sender: Any) {
+    @IBAction func takeAnImageByCamera(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
