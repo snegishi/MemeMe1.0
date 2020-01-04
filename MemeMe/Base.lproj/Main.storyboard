@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EditorViewController" customModule="MemeMe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="camera.fill" catalog="system"/>
                                             <connections>
-                                                <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SPe-lU-Qa7"/>
+                                                <action selector="takeAnImageByCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vid-kH-6WA"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -36,7 +36,7 @@
                                                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
-                                                <action selector="pickAnImageFromeAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ktz-ph-g4U"/>
+                                                <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9E5-Zm-5xG"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -103,7 +103,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="bottomTextField" destination="dH7-Cd-3z7" id="WEi-x2-9vH"/>
+                        <outlet property="bottomTextField" destination="dH7-Cd-3z7" id="zrU-U2-Wxc"/>
                         <outlet property="cameraButton" destination="i4h-3T-kwt" id="WzP-0f-9sI"/>
                         <outlet property="imagePickerView" destination="TqL-sC-zcG" id="cKG-Ue-nKr"/>
                         <outlet property="naviBar" destination="bxY-mV-Z6v" id="X3R-lQ-6E3"/>

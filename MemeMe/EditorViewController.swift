@@ -54,16 +54,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         configure(textField: topTextField)
         configure(textField: bottomTextField)
-        
-//        topTextField.delegate = self
-//        bottomTextField.delegate = self
-//
-//        topTextField.defaultTextAttributes = memeTextAttributes
-//        topTextField.typingAttributes = memeTextAttributes
-//        bottomTextField.defaultTextAttributes = memeTextAttributes
-//
-//        topTextField.isHidden = true
-//        bottomTextField.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,15 +130,10 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
-
     }
 
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         presentImagePickerWith(sourceType: .photoLibrary)
-//        let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = .photoLibrary
-//        present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -164,13 +149,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
-    // TODO implement the function of Retake and Use Photo
     @IBAction func takeAnImageByCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        imagePicker.cameraCaptureMode = .photo
-        present(imagePicker, animated: true, completion: nil)
+        presentImagePickerWith(sourceType: .camera)
     }
     
     // MARK: Activities
@@ -199,12 +179,16 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
     }
     
+    func hideTopAndBottomBars(_ hide: Bool) {
+        naviBar.isHidden = hide
+        toolBar.isHidden = hide
+    }
+    
     func generateMemedImage() -> UIImage {
         
         // Hide toolbar and navbar
-        naviBar.isHidden = true
-        toolBar.isHidden = true
-
+        hideTopAndBottomBars(true)
+        
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
@@ -212,9 +196,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         UIGraphicsEndImageContext()
         
         // Show toolbar and navbar
-        naviBar.isHidden = false
-        toolBar.isHidden = false
-
+        hideTopAndBottomBars(false)
+        
         return memedImage
     }
     
