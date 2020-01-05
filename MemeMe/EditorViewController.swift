@@ -54,14 +54,15 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         configure(textField: topTextField)
         configure(textField: bottomTextField)
+
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        shareButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         subscribeToHideKeyboardNotifications()
-        shareButton.isEnabled = false
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,9 +89,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     // MARK: Keyboard Functions
-    
-    // TODO limit the funciton to move the keyboard position only when editing the bottom text
-    
+        
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -143,6 +142,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         picker.dismiss(animated: true, completion: nil)
         shareButton.isEnabled = true
+        print("share button enabled")
 
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imagePickerView.image = image
