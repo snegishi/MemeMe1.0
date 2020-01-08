@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,12 +73,12 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gjn-AD-PDc">
-                                <rect key="frame" x="179" y="238" width="56" height="28.5"/>
+                                <rect key="frame" x="179" y="138" width="56" height="28.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dH7-Cd-3z7">
-                                <rect key="frame" x="163" y="668.5" width="88" height="28.5"/>
+                                <rect key="frame" x="163" y="768.5" width="88" height="28.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
@@ -86,8 +86,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="TqL-sC-zcG" firstAttribute="top" secondItem="bxY-mV-Z6v" secondAttribute="bottom" id="425-KS-Tf1"/>
-                            <constraint firstItem="TqL-sC-zcG" firstAttribute="bottom" secondItem="dH7-Cd-3z7" secondAttribute="bottom" constant="150" id="DXN-63-64O"/>
-                            <constraint firstItem="gjn-AD-PDc" firstAttribute="top" secondItem="TqL-sC-zcG" secondAttribute="top" constant="150" id="Dxi-Nb-h2p"/>
+                            <constraint firstItem="TqL-sC-zcG" firstAttribute="bottom" secondItem="dH7-Cd-3z7" secondAttribute="bottom" constant="50" id="DXN-63-64O"/>
+                            <constraint firstItem="gjn-AD-PDc" firstAttribute="top" secondItem="TqL-sC-zcG" secondAttribute="top" constant="50" id="Dxi-Nb-h2p"/>
                             <constraint firstItem="TqL-sC-zcG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IAA-cO-HUE"/>
                             <constraint firstAttribute="bottom" secondItem="XLZ-og-qUw" secondAttribute="bottom" id="K1R-se-30b"/>
                             <constraint firstItem="gjn-AD-PDc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q8l-e1-fWY"/>
